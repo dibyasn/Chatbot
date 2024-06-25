@@ -1,21 +1,18 @@
-# chatbot
+# Chatbot
 
 ---
 
- Chatbot using gemini API
 
 <p align="center">
     <img src="https://github.com/dibyasn/Chatbot/assets/42934757/89058190-5d73-49ba-9258-5e6ee78dd20a" alt="Chatbot" style: width="400px;">
 </p>
 
-# Chat Bot
 
 Welcome to the Kids Chat Bot project! This interactive chatbot is designed to be fun and engaging for kids, using the Gemini API to provide answers to their questions. This README will guide you through the steps to set up, customize, and run the project.
 
 ## Table of Contents
 
-- [chatbot](#chatbot)
-- [Chat Bot](#chat-bot)
+- [Chatbot](#chatbot)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Features](#features)
