@@ -44,6 +44,19 @@
       border-radius: 20px;
       border: 2px solid #87ceeb;
     }
+    .submit-btn {
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: none;
+      background-color: #87ceeb;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .submit-btn:hover {
+      background-color: #4682b4;
+      transform: scale(1.1);
+    }
     .input-box input[type="submit"] {
       padding: 10px 20px;
       border-radius: 20px;
@@ -72,11 +85,18 @@
     .button-box button:hover {
       background-color: #4682b4;
     }
+    .api-key-box {
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
   <div class="container chat-container">
-    <h1 class="text-center mb-4">Ask Your Questions</h1>
+    <h1 class="text-center mb-4">Kids Chat Bot</h1>
+    <div class="api-key-box text-center">
+      <input type="text" id="apiKey" class="form-control d-inline" placeholder="Enter your Gemini API key...">
+      <button class="btn d-inline submit-btn" onclick="submitApiKey()">Submit API Key</button>
+    </div>
     <div class="chat-box" id="chat-box"></div>
     <div class="input-box text-center">
       <input type="text" id="question" class="form-control d-inline" placeholder="Type your question here..." onkeypress="handleKeyPress(event)">
@@ -89,8 +109,19 @@
   </div>
 
   <script>
-    const geminiToken = "AIzaSyCWCZU6RNNTYWTcvU_U1yv61iXkvHP1KYg";  // Replace with your Gemini API key
-    const geminiMaxTokens = "10000";
+    let geminiToken = "";
+
+    function submitApiKey() {
+      geminiToken = document.getElementById('apiKey').value.trim();
+      if (!geminiToken) {
+        alert('Please enter a valid API key!');
+        return;
+      }
+      document.getElementById('apiKey').value = '';  // Clear the input field after submission
+      document.getElementById('apiKey').placeholder = '******';  // Change placeholder after submission
+      document.getElementById('apiKey').disabled = true;  // Disable the input field after submission
+      alert('API Key submitted successfully!');
+    }
 
     async function sendQuestion() {
       const question = document.getElementById('question').value;
@@ -104,7 +135,7 @@
 
       const payload = {
         contents: [{ parts: [{ text: question }] }],
-        generationConfig: { maxOutputTokens: geminiMaxTokens }
+        generationConfig: { maxOutputTokens: 10000 }
       };
 
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiToken}`, {
