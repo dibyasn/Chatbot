@@ -4,7 +4,7 @@
 
 
 <p align="center">
-    <img src="https://github.com/dibyasn/Chatbot/assets/42934757/89058190-5d73-49ba-9258-5e6ee78dd20a" alt="Chatbot" style: width="400px;">
+    <img src="https://github.com/dibyasn/Chatbot/assets/42934757/e0bf061b-7950-4580-957b-238cb0090dfd" alt="Chatbot" style: width="350px;">
 </p>
 
 
