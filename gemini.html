@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Chat Bot</title>
+  <title>Kids Chat Bot</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
@@ -56,15 +56,35 @@
     .input-box input[type="submit"]:hover {
       background-color: #4682b4;
     }
+    .button-box {
+      margin-top: 10px;
+    }
+    .button-box button {
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: none;
+      background-color: #87ceeb;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin: 5px;
+    }
+    .button-box button:hover {
+      background-color: #4682b4;
+    }
   </style>
 </head>
 <body>
   <div class="container chat-container">
-    <h1 class="text-center mb-4">Ask your Questions</h1>
+    <h1 class="text-center mb-4">Ask Your Questions</h1>
     <div class="chat-box" id="chat-box"></div>
     <div class="input-box text-center">
-      <input type="text" id="question" class="form-control d-inline" placeholder="Type your question here...">
+      <input type="text" id="question" class="form-control d-inline" placeholder="Type your question here..." onkeypress="handleKeyPress(event)">
       <input type="submit" class="btn d-inline" value="Send" onclick="sendQuestion()">
+    </div>
+    <div class="button-box text-center">
+      <button onclick="clearChat()">Clear</button>
+      <button onclick="downloadChat()">Download Chat</button>
     </div>
   </div>
 
@@ -112,6 +132,29 @@
         errorDiv.textContent = 'Error: Unable to get a response from the API';
         chatBox.appendChild(errorDiv);
       }
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendQuestion();
+      }
+    }
+
+    function clearChat() {
+      const chatBox = document.getElementById('chat-box');
+      chatBox.innerHTML = '';
+    }
+
+    function downloadChat() {
+      const chatBox = document.getElementById('chat-box');
+      const chatText = chatBox.innerText;
+      const blob = new Blob([chatText], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'chat.txt';
+      a.click();
+      URL.revokeObjectURL(url);
     }
   </script>
 </body>
