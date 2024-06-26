@@ -61,7 +61,7 @@ Follow these steps to set up the Kids Chat Bot:
 
 3. **Open the Project**
    - Extract the ZIP file (if downloaded)
-   - Open the `gemini.html` file in your web browser
+   - Open the `index.html` file in your web browser
 
 ## Usage
 
